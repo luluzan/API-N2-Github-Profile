@@ -1,14 +1,12 @@
 
 const apiUrl = 'https://api.github.com/users/'
 
-
-
 const main = document.getElementById("main");
 
 form.addEventListener('submit', function(e){
     e.preventDefault();
 
-    //eliminar resultado anterior
+    //limpiamos busqueda previa
     main.innerHTML='';
 
     let user = document.getElementById("search").value;
@@ -27,7 +25,7 @@ form.addEventListener('submit', function(e){
             avatarImg.classList.add('avatar');
             profile.appendChild(avatarImg);
                 
-            //Accedemos a los datos de repositorios de la API
+            //Accedemos a los repos de la API
             axios.get(data.repos_url)
                 .then(response =>{
                     const repoData = response.data;
@@ -51,7 +49,7 @@ form.addEventListener('submit', function(e){
             profile.appendChild(profileData);
             
             //User NAME
-            let nameProfile = document.createElement("h2");
+            let nameProfile = document.createElement("h1");
             nameProfile.textContent = data.name;
             nameProfile.classList.add('user-info');
             profileData.appendChild(nameProfile);
